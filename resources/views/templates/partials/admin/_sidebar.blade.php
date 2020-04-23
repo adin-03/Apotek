@@ -17,16 +17,16 @@
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li class="iq-menu-title"><i class="ri-subtract-line"></i><span>Dashboard</span></li>
-                <li class="active">
-                    <a href="index.html" class="iq-waves-effect"><i class="ri-hospital-fill"></i><span>Dashboard</span></a>
+                <li class="{{Request::is('admin/dashboard') ? 'active' : ''}}">
+                    <a href="{{route('dashboard')}}" class="iq-waves-effect"><i class="ri-hospital-fill"></i><span>Dashboard</span></a>
                 </li>
-                <li class="">
+                <li class="{{Request::is('admin/merk') ? 'active' : ''}}">
                     <a href="{{route('merk.index')}}" class="iq-waves-effect"><i class="ri-hospital-fill"></i><span>Merk</span></a>
                 </li>
-                <li class="">
+                <li class="{{Request::is('admin/obat') ? 'active' : ''}}">
                     <a href="{{route('obat.index')}}" class="iq-waves-effect"><i class="ri-hospital-fill"></i><span>Data Obat</span></a>
                 </li>
-                <li class="">
+                <li class="{{Request::is('admin/transaksi') ? 'active' : ''}}">
                     <a href="{{route('transaksi.index')}}" class="iq-waves-effect"><i class="ri-hospital-fill"></i><span>Data Transaksi</span></a>
                 </li>
                 {{--<li>

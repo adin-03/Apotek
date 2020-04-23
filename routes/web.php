@@ -28,8 +28,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function (){
 
 
-    Route::get('/','UserController@index')->name('admin.index');
+    //Route::get('/','UserController@index')->name('admin.index');
 
+
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('obat', 'ObatController@index')->name('obat.index');
     Route::get('obat/create','ObatController@create')->name('obat.create');
     Route::post('obat/create','ObatController@store')->name('obat.store');
@@ -41,6 +43,7 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('transaksi', 'TransaksiController@index')->name('transaksi.index');
     Route::get('transaksi/create', 'TransaksiController@create')->name('transaksi.create');
     Route::post('transaksi/create','TransaksiController@store')->name('transaksi.store');
+    Route::get('transaksi/search', 'TransaksiController@search')->name('transaksi.search');
 
 
 

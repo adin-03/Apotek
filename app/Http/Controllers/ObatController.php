@@ -15,6 +15,8 @@ class ObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $obats = Obat::all();
@@ -92,7 +94,7 @@ class ObatController extends Controller
         $obats->satuan = $request->satuan;
         $obats->harga = $request->harga;
         $obats->stok = $request->stok;
-        $obats->save();
+        $obats->update();
         return redirect()->route('obat.index');
     }
 

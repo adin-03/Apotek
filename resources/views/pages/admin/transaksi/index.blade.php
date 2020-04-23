@@ -10,12 +10,33 @@
                     <a href="{{route('transaksi.create')}}" class="btn btn-info btn-md float-right">Tambah</a>
                 </div>
                 <div class="iq-card-body">
+                    <form action="{{route('transaksi.search')}}" method="get">
+                        @csrf
+                        <div class="row">
+                            @php($bulan = ['Januari', 'Febuari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'])
+                            <select class="form-control col-md-3 mr-2 ml-3" name="search_bulan_1">
+                                @for($i = 0; $i < count($bulan); $i++)
+                                    <option value="{{$i}}">{{$bulan[$i]}}</option>
+                                @endfor
+                            </select>
+
+                            <select class="form-control col-md-3 mr-3" name="search_bulan_2">
+                                @for($i = 0; $i < count($bulan); $i++)
+                                    <option value="{{$i}}">{{$bulan[$i]}}</option>
+                                @endfor
+                            </select>
+
+                            <button class="btn btn-primary" type="submit">search</button>
+
+                        </div>
+                    </form>
+                    <a href="{{route('transaksi.create')}}" class="btn btn-info btn-md float-right mb-3">Tambah</a>
                     <div class="table-responsive">
                         <table id="example" class="display" style="width:100%">
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Kode Obat</th>
+                                <th>Nama Obat</th>
                                 <th>Stok</th>
                                 <th>Tanggal</th>
                                 <th>Harga</th>
@@ -27,9 +48,9 @@
                             @foreach($transaksis as $transaksi)
                                 <tr>
                                     <th>{{$transaksi->id}}</th>
-                                    <th>{{$transaksi->kode_obat}}</th>
+                                    <th>{{$transaksi->obat->nama_produk}}</th>
                                     <th>{{$transaksi->stok}}</th>
-                                    <th>{{$transaksi->tanggal}}</th>
+                                    <th>{{\Carbon\Carbon::parse($transaksi->tanggal)->format('d M Y')}}</th>
                                     <th>{{$transaksi->harga}}</th>
                                     <th>{{$transaksi->total_harga}}</th>
                                     <th>

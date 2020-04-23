@@ -12,6 +12,7 @@ class MerkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $merks = Merk::all();
